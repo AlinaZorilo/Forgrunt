@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './const/index.js';
+import EthCoin from './EthCoin.jsx';
+import LtcCoin from './LtcCoin.jsx';
+import BtcCoin from './BtcCoin.jsx';
 
 class CoinDisplay extends Component {
   constructor() {
@@ -12,7 +15,6 @@ class CoinDisplay extends Component {
       isToggleOn1: true,
       isToggleOn2: true,
     };
-    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(a) {
@@ -30,6 +32,7 @@ class CoinDisplay extends Component {
       }));
     }
   }
+
   componentDidMount() {
     const zip = this.props.zip;
     const URLBTC =
@@ -63,213 +66,27 @@ class CoinDisplay extends Component {
       <div className="main">
         {this.state &&
           this.state.ethData && (
-            <div className="block">
-              <h3>Ethereum</h3>
-              <img src="http://127.0.0.1:8887/src/img/coin1.png" alt="" />
-              <div className="info">
-                <div className="row">
-                  <span className="left big white">Price:</span>
-                  <span className="left big white">${ethData.ask}</span>
-                </div>
-                <div className="row">
-                  <span className="left white">Percent change</span>
-                  <label class="switch" onInput={() => this.handleClick(1)}>
-                    <input type="checkbox" />
-                    <span class="slider round" />
-                  </label>
-                </div>
-                <div>
-                  <div className="row">
-                    <span className="left">Hour change</span>
-                    {this.state.isToggleOn ? (
-                      <span className="right">
-                        ${ethData.changes.price.hour}
-                      </span>
-                    ) : (
-                      <span className="right">
-                        {ethData.changes.percent.hour}%
-                      </span>
-                    )}
-                  </div>
-                  <div className="row">
-                    <span className="left">Day change</span>
-                    {this.state.isToggleOn ? (
-                      <span className="right">
-                        ${ethData.changes.price.day}
-                      </span>
-                    ) : (
-                      <span className="right">
-                        {ethData.changes.percent.day}%
-                      </span>
-                    )}
-                  </div>
-                  <div className="row">
-                    <span className="left">Week change</span>
-                    {this.state.isToggleOn ? (
-                      <span className="right">
-                        ${ethData.changes.price.week}
-                      </span>
-                    ) : (
-                      <span className="right">
-                        {ethData.changes.percent.week}%
-                      </span>
-                    )}
-                  </div>
-                  <div className="row">
-                    <span className="left">Month change</span>
-                    {this.state.isToggle ? (
-                      <span className="right">
-                        ${ethData.changes.price.month}
-                      </span>
-                    ) : (
-                      <span className="right">
-                        {ethData.changes.percent.month}%
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <EthCoin
+              ethData={ethData}
+              isToggleOn={this.state.isToggleOn}
+              handleClick={this.handleClick.bind(this)}
+            />
           )}
         {this.state &&
           this.state.ltcData && (
-            <div className="block">
-              <h3>Litecoin</h3>
-              <img src="http://127.0.0.1:8887/src/img/coin2.png" alt="" />
-              <div className="info">
-                <div className="row">
-                  <span className="left big white">Price:</span>
-                  <span className="left big white">${ltcData.ask}</span>
-                </div>
-                <div className="row">
-                  <span className="left white">Percent change</span>
-                  <label class="switch" onInput={() => this.handleClick(2)}>
-                    <input type="checkbox" />
-                    <span class="slider round" />
-                  </label>
-                </div>
-                <div>
-                  <div className="row">
-                    <span className="left">Hour change</span>
-                    {this.state.isToggleOn1 ? (
-                      <span className="right">
-                        ${ltcData.changes.price.hour}
-                      </span>
-                    ) : (
-                      <span className="right">
-                        {ltcData.changes.percent.hour}%
-                      </span>
-                    )}
-                  </div>
-                  <div className="row">
-                    <span className="left">Day change</span>
-                    {this.state.isToggleOn1 ? (
-                      <span className="right">
-                        ${ltcData.changes.price.day}
-                      </span>
-                    ) : (
-                      <span className="right">
-                        {ltcData.changes.percent.day}%
-                      </span>
-                    )}
-                  </div>
-                  <div className="row">
-                    <span className="left">Week change</span>
-                    {this.state.isToggleOn1 ? (
-                      <span className="right">
-                        ${ltcData.changes.price.week}
-                      </span>
-                    ) : (
-                      <span className="right">
-                        {ltcData.changes.percent.week}%
-                      </span>
-                    )}
-                  </div>
-                  <div className="row">
-                    <span className="left">Month change</span>
-                    {this.state.isToggleOn1 ? (
-                      <span className="right">
-                        ${ltcData.changes.price.month}
-                      </span>
-                    ) : (
-                      <span className="right">
-                        {ltcData.changes.percent.month}%
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <LtcCoin
+              ltcData={ltcData}
+              isToggleOn1={this.state.isToggleOn1}
+              handleClick={this.handleClick.bind(this)}
+            />
           )}
         {this.state &&
           this.state.btcData && (
-            <div className="block">
-              <h3>Bitcoin</h3>
-              <img src="http://127.0.0.1:8887/src/img/coin3.png" alt="" />
-              <div className="info">
-                <div className="row">
-                  <span className="left big white">Price:</span>
-                  <span className="left big white">${btcData.ask}</span>
-                </div>
-                <div className="row">
-                  <span className="left white">Percent change</span>
-                  <label class="switch" onInput={() => this.handleClick(3)}>
-                    <input type="checkbox" />
-                    <span class="slider round" />
-                  </label>
-                </div>
-                <div>
-                  <div className="row">
-                    <span className="left">Hour change</span>
-                    {this.state.isToggleOn2 ? (
-                      <span className="right">
-                        ${btcData.changes.price.hour}
-                      </span>
-                    ) : (
-                      <span className="right">
-                        {btcData.changes.percent.hour}%
-                      </span>
-                    )}
-                  </div>
-                  <div className="row">
-                    <span className="left">Day change</span>
-                    {this.state.isToggleOn2 ? (
-                      <span className="right">
-                        ${btcData.changes.price.day}
-                      </span>
-                    ) : (
-                      <span className="right">
-                        {btcData.changes.percent.day}%
-                      </span>
-                    )}
-                  </div>
-                  <div className="row">
-                    <span className="left">Week change</span>
-                    {this.state.isToggleOn2 ? (
-                      <span className="right">
-                        ${btcData.changes.price.week}
-                      </span>
-                    ) : (
-                      <span className="right">
-                        {btcData.changes.percent.week}%
-                      </span>
-                    )}
-                  </div>
-                  <div className="row">
-                    <span className="left">Month change</span>
-                    {this.state.isToggleOn2 ? (
-                      <span className="right">
-                        ${btcData.changes.price.month}
-                      </span>
-                    ) : (
-                      <span className="right">
-                        {btcData.changes.percent.month}%
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <BtcCoin
+              btcData={btcData}
+              isToggleOn2={this.state.isToggleOn2}
+              handleClick={this.handleClick.bind(this)}
+            />
           )}
       </div>
     );
