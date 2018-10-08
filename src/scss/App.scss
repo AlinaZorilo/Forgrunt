@@ -171,18 +171,3 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-
-@media screen and (min-width: 320px) {
-  .App {
-    .body {
-      width: 308px;
-    }
-  }
-}
-@media screen and (min-width: 1440px) and (max-width: 1920px) {
-  .App {
-    .body {
-      width: 985px;
-    }
-  }
-}
