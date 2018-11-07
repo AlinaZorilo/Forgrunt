@@ -1,4 +1,5 @@
 import React from 'react';
+import coin2 from './img/coin2.png';
 
 class LtcCoin extends React.Component {
   render() {
@@ -9,7 +10,7 @@ class LtcCoin extends React.Component {
       <div>
         <div className="block">
           <h3>Litecoin</h3>
-          <img src="http://127.0.0.1:8887/src/img/coin2.png" alt="" />
+          <img src={coin2} alt="" />
           <div className="info">
             <div className="row">
               <span className="left big white">Price:</span>
