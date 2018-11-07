@@ -17,7 +17,7 @@ class App extends Component {
       <div className="App">
         <div className="body">
           <div className="head">
-            <span>Select currency to axhange:</span>
+            <span>Select currency to exchange:</span>
             <select onChange={this.handleChange}>
               {CURRENCY.map((place, index) => (
                 <option key={index} value={index}>
